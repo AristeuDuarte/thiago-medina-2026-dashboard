@@ -1758,10 +1758,10 @@ window.DASH_DATA = {"municipios":[{"nome":"RECIFE","codigoTSE":25313,"rankPL":1,
 (function () {
   "use strict";
   // Cortina de acesso simples — NÃO é segurança real. O hash abaixo corresponde à senha
-  // "trocar-senha-2026". Troque antes de publicar: calcule o novo hash SHA-256 (hex) da sua
-  // senha (por exemplo, com `echo -n "sua-senha" | shasum -a 256` no terminal, ou qualquer
-  // gerador de SHA-256 online) e substitua o valor de PASSWORD_HASH abaixo.
-  var PASSWORD_HASH = "f289bf9c10fa79c8d8db0dd391b99521ee23378cdb842c450be446f84b09d7e1";
+  // combinada com a coordenação da campanha. Para trocar de novo no futuro: calcule o novo
+  // hash SHA-256 (hex) da senha (por exemplo, com `echo -n "sua-senha" | shasum -a 256` no
+  // terminal, ou qualquer gerador de SHA-256 online) e substitua o valor de PASSWORD_HASH abaixo.
+  var PASSWORD_HASH = "fd71a9e48a0cfd0d4852ff7900e607204311250c2f04dac30ba03b6851da2632";
 
   function sha256Hex(text) {
     var enc = new TextEncoder().encode(text);
