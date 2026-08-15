@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
 <title>Thiago Medina 2026 — Dossiê de Inteligência Eleitoral</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -400,15 +403,22 @@ footer.dossier-footer{
   display:flex;align-items:center;justify-content:center;padding:20px;
 }
 .access-gate-box{max-width:380px;width:100%;}
-.access-gate-box input[type=password]{
-  width:100%;font-family:var(--font-body);font-size:14px;padding:10px 12px;
+.access-gate-box input[type=password],.access-gate-box input[type=text]{
+  width:100%;font-family:var(--font-body);font-size:14px;padding:10px 66px 10px 12px;
   border:1px solid rgba(255,255,255,.25);border-radius:var(--radius-s);
   background:rgba(255,255,255,.06);color:#fff;
 }
-.access-gate-box input[type=password]::placeholder{color:#8ba0c2;}
-.access-gate-box input[type=password]:focus{outline:2px solid var(--blue-500);outline-offset:1px;}
+.access-gate-box input::placeholder{color:#8ba0c2;}
+.access-gate-box input:focus{outline:2px solid var(--blue-500);outline-offset:1px;}
+.password-field{position:relative;}
+.password-toggle{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:3px;
+  color:#c3d2e8;padding:5px 8px;cursor:pointer;
+}
+.password-toggle:hover{background:rgba(255,255,255,.16);color:#fff;}
 .access-gate-error{color:#e2887c;font-size:12px;min-height:16px;margin:8px 0 0;}
-.access-gate-note{color:#7d93b5;font-size:10.5px;line-height:1.5;margin-top:18px;border-top:1px solid rgba(255,255,255,.14);padding-top:12px;}
 
 </style>
 </head>
@@ -419,10 +429,12 @@ footer.dossier-footer{
     <span class="header-eyebrow" style="color:#9db6dc">Confidencial &middot; uso interno da campanha</span>
     <h1 style="color:#fff;font-size:20px;margin:6px 0 4px">Thiago Medina — Dossiê de Inteligência Eleitoral</h1>
     <p style="color:#b7c8e2;font-size:12.5px;margin:0 0 16px">Digite a senha de acesso combinada com a coordenação.</p>
-    <input type="password" id="accessGatePassword" placeholder="Senha de acesso" autocomplete="off"/>
+    <div class="password-field">
+      <input type="password" id="accessGatePassword" placeholder="Senha de acesso" autocomplete="off"/>
+      <button type="button" id="accessGateToggle" class="password-toggle" aria-label="Mostrar senha">Mostrar</button>
+    </div>
     <button class="btn btn-primary" id="accessGateBtn" style="width:100%;margin-top:10px;padding:10px">Entrar</button>
     <p id="accessGateError" class="access-gate-error"></p>
-    <p class="access-gate-note">Esta senha é uma cortina simples contra acesso casual, não uma proteção de segurança real — qualquer pessoa com conhecimento técnico pode contornar vendo o código-fonte da página. Para dados que exigem controle de acesso de verdade, use uma hospedagem com autenticação no servidor.</p>
   </div>
 </div>
 
@@ -1802,6 +1814,16 @@ window.DASH_DATA = {"municipios":[{"nome":"RECIFE","codigoTSE":25313,"rankPL":1,
       if (e.key === "Enter") tryUnlock();
     });
     document.getElementById("accessGatePassword").focus();
+
+    var toggleBtn = document.getElementById("accessGateToggle");
+    var pwInput = document.getElementById("accessGatePassword");
+    toggleBtn.addEventListener("click", function () {
+      var isHidden = pwInput.type === "password";
+      pwInput.type = isHidden ? "text" : "password";
+      toggleBtn.textContent = isHidden ? "Ocultar" : "Mostrar";
+      toggleBtn.setAttribute("aria-label", isHidden ? "Ocultar senha" : "Mostrar senha");
+      pwInput.focus();
+    });
   });
 })();
 
