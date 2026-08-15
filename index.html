@@ -132,6 +132,11 @@ button{font-family:var(--font-body);}
 .btn-primary{background:var(--blue-500);color:#fff;}
 .btn-primary:hover{background:#4a80c4;}
 .btn-small{padding:5px 10px;font-size:11.5px;}
+.version-tag{
+  font-family:var(--font-mono);font-size:10.5px;color:#8ba0c2;
+  margin-left:auto;align-self:center;letter-spacing:.02em;
+}
+footer.dossier-footer .version-tag{color:var(--gray-400);margin-left:0;display:inline-block;margin-top:4px;}
 
 /* Dossier tabs */
 .tabs-wrap{position:relative;z-index:1;overflow-x:auto;scrollbar-width:thin;}
@@ -448,6 +453,7 @@ footer.dossier-footer{
     </div>
     <button class="btn btn-primary" id="accessGateBtn" style="width:100%;margin-top:10px;padding:10px">Entrar</button>
     <p id="accessGateError" class="access-gate-error"></p>
+    <p class="version-tag" style="margin-top:16px">v1.4 &middot; 15/08/2026</p>
   </div>
 </div>
 
@@ -467,6 +473,7 @@ footer.dossier-footer{
   <div class="header-actions">
     <button class="btn btn-ghost" id="btnExecView">&#8598; Visão executiva</button>
     <button class="btn btn-ghost" id="btnClearFilters">Limpar filtros</button>
+    <span class="version-tag">v1.4 &middot; 15/08/2026</span>
   </div>
   <div class="tabs-wrap"><nav class="tabs" id="tabs"></nav></div>
 </header>
@@ -484,6 +491,7 @@ footer.dossier-footer{
 
 <footer class="dossier-footer">
   Dossiê gerado a partir de Analise_Eleitoral_Thiago_Medina_PE_2018_2022_v12.xlsx, Plano_Inteligencia_Eleitoral_Thiago_Medina_2026_v02.pdf e Resumo_Executivo_Meta_de_Votos_Thiago_Medina_2026.pdf &middot; Documento de trabalho, uso interno da campanha
+  <br/><span class="version-tag">v1.4 &middot; 15/08/2026</span>
 </footer>
 
 <div class="overlay" id="overlay"></div>
